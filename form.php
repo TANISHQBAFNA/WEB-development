@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,29 +5,34 @@
 	<link rel="stylesheet" type="text/css" href="form.css">
 </head>
 <body>
-	<form class="form">Thank You<br> Your Query has been sent</form>
-
 <?php  
 
 
 $host = "localhost";
 	$un = "root";
 	$pwd = "";
-	$dbname = "enquiry";
+	$dbname = "form";
 
-	$con =new mysqli($host, $un, $pwd, $dbname);
+	$con = mysqli_connect($host, $un, $pwd, $dbname);
 
-	if(!$con){
+	if(mysqli_connect_error()){
 		die("Connection failed:" . mysqli_connect_error);
 	}
 $fName=$_POST["fName"];
 $contact=$_POST["contact"];
 $email=$_POST["email"];
 $query=$_POST["Query"];
-$query="INSERT INTO enquiry WHERE VALUES('$fName',$contact,'$email','$query')";
-$dbresult =$con->query($query);
 
+$sql="INSERT INTO form(fName,contact,email,query) VALUES('".$fName."','".$contact."','".$email."','".$query."')";
+$q=mysqli_query($con,$sql);
+
+if($q == 1){
+		echo "<h1>Thank You</h1><br><h1>Your Query has been sent</h1>";
+	}
+	else{
+		echo "Error";
+	}
+		mysqli_close($con);
 ?> 
-
 </body>
 </html>
