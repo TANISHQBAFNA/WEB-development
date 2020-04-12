@@ -22,11 +22,11 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
-
-CREATE TABLE `enquiry` (
+CREATE TABLE `form` (
   `fName` varchar(15) NOT NULL,
-  `contact` int NOT NULL,
+  `lName` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `age` varchar(32) NOT NULL,
   `query` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
